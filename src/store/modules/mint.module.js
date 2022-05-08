@@ -1,0 +1,38 @@
+import {Mint} from '../../services/MintService';
+
+export default{
+    namespace: true,
+    state:{
+        minter:{
+            totalMint: 0,
+            imageURI: "",
+            uriArray: []
+        }
+    },
+    mutations:{
+        TOTAL_MINT : function(state, payload){
+            state.minter.totalMint = payload.counter;
+        },
+        URI_ARRAY: async function(state, payload) {
+            state.minter.uriArray = payload
+        },
+        MINT_STATUS: async function(state, payload){
+            state.minter.isMinted = payload.isMinted;
+        },
+    },
+    actions:{
+        getTotalMinted: async function({commit}){
+            const count = await Mint.getTotalMint()
+            const counter = parseInt(count);
+            commit('TOTAL_MINT', counter);
+        },
+        getMintURI: async function({commit}){
+            const arr = await Mint.mintURI()
+            commit('URI_ARRAY', arr)
+        }, 
+        getMintStatus: async function({commit}, payload){
+            const result = await Mint.mintStatus(payload.metadataURI)
+            commit("MINT_STATUS", {isMinted: result});
+        },
+    }
+}
