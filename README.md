@@ -9,5 +9,4 @@ For runing tests use the bellow command in the root directory of project:
 npx hardhat test
 
 ```
-Befor runing this project, please install meta mask using the link bellow:
-[Link text Here](https://metamask.io/download.html)
+Befor runing this project, please install meta mask [ using the link bellow](https://metamask.io/download.html)
