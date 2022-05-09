@@ -1,15 +1,13 @@
-# Basic Sample Hardhat Project
+# Basic Minting Website using vuejs 3
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+This project basically is a minting website, that allows everyone who have meta mask wallet to mint images, the images uploaded to pniata. the smart contract to mint NFT is written in solidity, tested using hardhat.
 
-Try running some of the following tasks:
+For runing tests use the bellow command in the root directory of project:
 
 ```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
+
 npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
+
 ```
+Befor runing this project, please install meta mask using the link bellow:
+[Link text Here](https://metamask.io/download.html)
