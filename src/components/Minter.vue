@@ -9,15 +9,20 @@
 </template>
 
 <script>
-import {Mint} from '../services/MintService'
+import {Mint} from '../store/modules/mint.module';
+import { ethers } from 'ethers';
 import { mapGetters } from 'vuex';
 export default {
     name: 'Minter',
     props: ['tokenId', 'imageUri', 'metaDataUri', 'isMinted'],
     methods:{
         mint: async function(metadataURI){
-            const result = await Mint.mintToken(metadataURI)
-            await result.wait();
+            const connection = Mint.contract.connect(Mint.signer);    
+            const addr = connection.address;
+            const result = await Mint.contract.payToMint(addr, metadataURI, {
+            value: ethers.utils.parseEther('0.05'),
+            });
+            await result.wait()
             this.$store.dispatch('getTotalMinted');
             this.$store.dispatch('getMintStatus', {metadataURI: metadataURI})
             
@@ -28,7 +33,8 @@ export default {
         }
     },
     computed:mapGetters({
-        mintState: "getMintState"
+        mintState: "getMintState",
+        walletState: "getWalletState"
     }),
 }
 </script>

@@ -21,7 +21,7 @@ import Minter from './Minter.vue';
 export default {
     name: 'Mint',
     computed:mapGetters({
-        mintState: "getMintState"
+        mintState: "getMintState",
     }),
     components:{Minter},
 }
