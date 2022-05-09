@@ -13,10 +13,10 @@ export default{
         TOTAL_MINT : function(state, payload){
             state.minter.totalMint = payload.counter;
         },
-        URI_ARRAY: async function(state, payload) {
+        URI_ARRAY: function(state, payload) {
             state.minter.uriArray = payload
         },
-        MINT_STATUS: async function(state, payload){
+        MINT_STATUS: function(state, payload){
             state.minter.isMinted = payload.isMinted;
         },
     },

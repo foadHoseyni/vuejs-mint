@@ -4,16 +4,23 @@ export default{
     state:{
         wallet:{
             count: 0,
-            address: ""
+            address: "",
+            metaMask: false
         }
     },
     mutations:{
+        META_MASK: function(state){
+            state.wallet.metaMask = Wallet.metamask !=='undefined';
+        },
         WALLET_INFO: function(state, payload){
             state.wallet.address = payload.address;
             state.wallet.count = payload.count;
         }
     },
     actions:{
+        getMetaMask: function({commit}){
+            commit("META_MASK")
+        },
         getWalletInfo: async function({commit}){
             const address = await Wallet.getAccount();
             const count = await Wallet.getBalance(address[0]);

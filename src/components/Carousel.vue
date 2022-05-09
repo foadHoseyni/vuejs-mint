@@ -30,10 +30,6 @@
 <script>
 export default {
     name: 'Carousel',
-    created(){
-        this.$store.dispatch("getTotalMinted")
-        this.$store.dispatch("getMintURI")
-    }
 }
 </script>
 

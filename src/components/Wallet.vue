@@ -9,7 +9,7 @@
                       </div>
                       <div class="card-body d-flex flex-column">
                           <img src="../assets/media/img/metamask.png" class="img-fluid" alt="">
-                          <p class="h5"><span class="text-warning V-font">Balance: </span>{{walletState.count}}</p>
+                          <p class="h5"><span class="text-warning V-font">Balance: </span>{{walletState.count}} </p>
                           <p class="h5"><span class="text-warning V-font">Address: </span>{{walletState.address}}</p>
                           <button class="btn btn-warning V-font" @click="this.getBalance">Connect</button>
                       </div>
@@ -25,11 +25,9 @@ import { mapGetters } from 'vuex';
 
 export default {
     name: 'Wallet',
-    data: function(){
-        return{
-            count: 0,
-            account: ""
-        }
+    created(){
+        this.$store.dispatch("getTotalMinted")
+        this.$store.dispatch("getMintURI")
     },
     methods:{
         getBalance: function(){

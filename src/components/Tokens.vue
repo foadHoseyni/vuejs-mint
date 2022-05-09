@@ -57,8 +57,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-    name:'Tokens'
+    name:'Tokens',
+    created(){
+        this.$store.dispatch("getMetaMask")
+    }
 }
 </script>
 

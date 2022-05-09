@@ -24,7 +24,6 @@ export default {
         mintState: "getMintState"
     }),
     components:{Minter},
-    
 }
 
 </script>
