@@ -2,8 +2,10 @@
   <Navbar/>
   <Carousel/>
   <Tokens/>
-  <Wallet v-if="this.walletState.metaMask"/>
-  <Mint v-if="this.walletState.metaMask"/>
+  <div class="div" v-if="this.walletState.metaMask">
+    <Wallet/>
+    <Mint />
+  </div>
   <MetaMask v-if="!this.walletState.metaMask"/>
   <Contact/>
 </template>

@@ -10,6 +10,7 @@
 
 <script>
 import {Mint} from '../services/mintService';
+import FiredGuys from '../artifacts/contracts/MyNFT.sol/FiredGuys.json';
 import { ethers } from 'ethers';
 import { mapGetters } from 'vuex';
 export default {
@@ -17,9 +18,13 @@ export default {
     props: ['tokenId', 'imageUri', 'metaDataUri', 'isMinted'],
     methods:{
         mint: async function(metadataURI){
-            const connection = Mint.contract.connect(Mint.signer);    
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(Mint.contractAddress, FiredGuys.abi, signer);
+        
+            const connection = contract.connect(signer);    
             const addr = connection.address;
-            const result = await Mint.contract.payToMint(addr, metadataURI, {
+            const result = await contract.payToMint(addr, metadataURI, {
             value: ethers.utils.parseEther('0.05'),
             });
             await result.wait()

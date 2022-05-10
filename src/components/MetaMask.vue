@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-      <div class="row">
-          <div class="col-md-6">
+      <div class="row justify-content-center">
+          <div class="col-md-6 align-self-center">
               <p class="h3 V-font">Follow the link to install 👇🏼</p>
               <a class="link-warning" href="https://metamask.io/download.html">Meta Mask</a>
           </div>

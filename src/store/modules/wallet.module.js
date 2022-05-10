@@ -10,7 +10,7 @@ export default{
     },
     mutations:{
         META_MASK: function(state){
-            state.wallet.metaMask = Wallet.metamask !== undefined;
+            state.wallet.metaMask = !!window.ethereum;
         },
         WALLET_INFO: function(state, payload){
             state.wallet.address = payload.address;
