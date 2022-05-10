@@ -4,6 +4,7 @@
   <Tokens/>
   <Wallet v-if="this.walletState.metaMask"/>
   <Mint v-if="this.walletState.metaMask"/>
+  <MetaMask v-if="!this.walletState.metaMask"/>
   <Contact/>
 </template>
 
@@ -15,10 +16,11 @@ import Contact from "./components/Contact.vue";
 import Wallet from "./components/Wallet.vue";
 import Mint from "./components/Mint.vue";
 import { mapGetters } from 'vuex';
+import MetaMask from "./components/MetaMask.vue";
 
 
 export default {
-  components: { Navbar, Carousel, Tokens, Contact, Wallet, Mint },
+  components: { Navbar, Carousel, Tokens, Contact, Wallet, Mint, MetaMask },
   computed:mapGetters({
     walletState:"getWalletState"
   })

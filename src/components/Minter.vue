@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import {Mint} from '../store/modules/mint.module';
+import {Mint} from '../services/mintService';
 import { ethers } from 'ethers';
 import { mapGetters } from 'vuex';
 export default {
