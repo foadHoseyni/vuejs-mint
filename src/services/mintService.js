@@ -5,25 +5,30 @@ import FiredGuys from '../artifacts/contracts/MyNFT.sol/FiredGuys.json';
 const contentId = 'QmTBxFm3SU3pmWQgGzb2ApZe9oMD6amZCAkyVa6HyvMDxB';
 const ipfsGateway = 'https://gateway.pinata.cloud/ipfs'
 export class Mint{
+    static provider
+    static signer
+    static contract
+    static initial(){
+        if (window.ethereum){
+             this.provider = new ethers.providers.Web3Provider(window.ethereum);
+             this.signer = this.provider.getSigner();
+             this.contract = new ethers.Contract(this.contractAddress, FiredGuys.abi, this.signer);
+        }
+    }
     static contractAddress = '0x2F6be3F94b24f87d967c0F2CFfa668C268fD8024';    
     static getTotalMint(){
         if (window.ethereum){
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
-            const contract = new ethers.Contract(this.contractAddress, FiredGuys.abi, signer);
-        
-            return contract.count();
+            this.initial()
+            return this.contract.count();
         }
     }
     static async mintURI(){
         if (window.ethereum){
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
-            const contract = new ethers.Contract(this.contractAddress, FiredGuys.abi, signer);
-        
+            this.initial()
             let arr = []
-                const count = await contract.count();
+                const count = await this.contract.count();
                 const counter = parseInt(count);
+                console.log(counter);
                 for (let i=0;i<counter+1;i++){
                     if(!arr[i]){
                         arr.push({
@@ -39,22 +44,16 @@ export class Mint{
     }
     static mintStatus(metadataURI){
         if (window.ethereum){
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
-            const contract = new ethers.Contract(this.contractAddress, FiredGuys.abi, signer);
-        
-            return contract.isContentOwned(metadataURI);
+            this.initial()
+            return this.contract.isContentOwned(metadataURI);
         }
     }
     static async mintToken(metadataURI){
         if (window.ethereum){
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
-            const contract = new ethers.Contract(this.contractAddress, FiredGuys.abi, signer);
-        
-            const connection = contract.connect(signer);    
+            this.initial()
+            const connection = this.contract.connect(this.signer);    
             const addr = connection.address;
-            const result = await contract.payToMint(addr, metadataURI, {
+            const result = await this.contract.payToMint(addr, metadataURI, {
                 value: ethers.utils.parseEther('0.05'),
             });
             await result.wait()
@@ -62,11 +61,8 @@ export class Mint{
     }
     static showURI(tokenId){
         if (window.ethereum){
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
-            const contract = new ethers.Contract(contractAddress, FiredGuys.abi, signer);
-        
-            return contract.tokenURI(tokenId);
+            this.initial()
+            return this.contract.tokenURI(tokenId);
         }
     }
 }

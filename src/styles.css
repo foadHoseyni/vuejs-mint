@@ -8,6 +8,12 @@ body{
     font-family: "VT323", cursive;
 }
 
+.IMG{
+  background-size: cover;
+  width: 100vh;
+  height: 100vh;
+}
+
 #app {
     /* font-family: Avenir, Helvetica, Arial, sans-serif; */
     -webkit-font-smoothing: antialiased;
