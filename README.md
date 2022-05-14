@@ -1,7 +1,7 @@
 # Basic Minting Website using vuejs 3
 
 This project basically is a minting website, that allows everyone who have meta mask wallet to mint images, the images uploaded to pniata. the smart contract to mint NFT is written in solidity using [openzeppelin wizard](https://wizard.openzeppelin.com/), and tested using hardhat. the test files written in javascript.
-Demo of this project [is here](https://vuejs-minter.netlify.app/).
+Demo of this project [is here.](https://vuejs-minter.netlify.app/).
 Clone this Github repository using flowing command.
 ```shell
 git clone https://github.com/foadHoseyni/vuejs-mint.git

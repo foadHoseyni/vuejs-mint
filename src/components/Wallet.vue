@@ -34,6 +34,8 @@ export default {
     methods:{
         getBalance: function(){
             this.$store.dispatch("getWalletInfo");
+            this.$store.dispatch("getTotalMinted")
+            this.$store.dispatch("getMintURI")
         },
     },
     computed: mapGetters({
