@@ -21,7 +21,7 @@ For build use
 ```shell
 npm run build
 ```
-Vue3 is used in this project, vuex is responsible for state management and for UI bootstrap is used. ethers used to interact with metamask wallet. you can use [Infura](https://infura.io/) or Alechemy(https://www.alchemy.com/) as RPC to connect to the ethereum nets. this project tested using localhost of hardhat and rinkeby test net of ethereum.
+Vue3 is used in this project, vuex is responsible for state management and for UI bootstrap is used. ethers used to interact with metamask wallet. you can use [Infura](https://infura.io/) or [Alechemy](https://www.alchemy.com/) as RPC to connect to the ethereum nets. this project tested using localhost of hardhat and rinkeby test net of ethereum.
 
 Create .env file in the root of project and put URL of your RPC, and private address of your metamask account in it and run the project.
 
