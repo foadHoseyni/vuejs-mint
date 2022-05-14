@@ -12,7 +12,7 @@ cd vuejs-mint
 npm install
 ```
 For running website locally use the flowing command.
-Befor runing this project, please install meta mask [ using this link.](https://metamask.io/download.html)
+Before runing this project, please install meta mask [ using this link.](https://metamask.io/download.html)
 
 ```shell
 npm run serve
