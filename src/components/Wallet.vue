@@ -25,7 +25,7 @@ import { mapGetters } from 'vuex';
 
 export default {
     name: 'Wallet',
-    created(){
+    mounted(){
         if (this.walletState.metaMask){    
             this.$store.dispatch("getTotalMinted")
             this.$store.dispatch("getMintURI")
@@ -34,8 +34,6 @@ export default {
     methods:{
         getBalance: function(){
             this.$store.dispatch("getWalletInfo");
-            this.$store.dispatch("getTotalMinted")
-            this.$store.dispatch("getMintURI")
         },
     },
     computed: mapGetters({
